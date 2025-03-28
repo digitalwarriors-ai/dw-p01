@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -13,10 +12,11 @@ import {
   ShoppingCart, 
   Users, 
   Zap,
-  Database,
   Home,
   Settings,
-  ChevronLeft
+  ChevronLeft,
+  TrendingUp,
+  Leaf
 } from "lucide-react";
 
 interface SidebarProps {
@@ -59,8 +59,13 @@ export function Sidebar({ onClose }: SidebarProps) {
     },
     {
       title: "Tráfego Pago",
-      icon: BarChart3,
-      href: "/trafego",
+      icon: TrendingUp,
+      href: "/trafego-pago",
+    },
+    {
+      title: "Tráfego Orgânico",
+      icon: Leaf,
+      href: "/trafego-organico",
     },
     {
       title: "Landing Page",
@@ -71,11 +76,6 @@ export function Sidebar({ onClose }: SidebarProps) {
       title: "Área Comercial",
       icon: Users,
       href: "/comercial",
-    },
-    {
-      title: "Banco de Dados",
-      icon: Database,
-      href: "/banco-dados",
     },
     {
       title: "Análise Avançada",

@@ -10,6 +10,15 @@ import { DashboardLayout } from "@/components/DashboardLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import EmailDashboard from "./pages/EmailDashboard";
+import WhatsAppDashboard from "./pages/WhatsAppDashboard";
+import SMSDashboard from "./pages/SMSDashboard";
+import PesquisasDashboard from "./pages/PesquisasDashboard";
+import LigacoesDashboard from "./pages/LigacoesDashboard";
+import TrafegoPagoDashboard from "./pages/TrafegoPagoDashboard";
+import TrafegoOrganicoDashboard from "./pages/TrafegoOrganicoDashboard";
+import LandingPageDashboard from "./pages/LandingPageDashboard";
+import ComercialDashboard from "./pages/ComercialDashboard";
+import AnaliseDashboard from "./pages/AnaliseDashboard";
 import UnauthorizedPage from "./pages/UnauthorizedPage";
 import NotFound from "./pages/NotFound";
 
@@ -37,15 +46,15 @@ const App = () => (
             >
               <Route path="/" element={<Dashboard />} />
               <Route path="/email" element={<EmailDashboard />} />
-              <Route path="/whatsapp" element={<div>WhatsApp Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/sms" element={<div>SMS Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/pesquisas" element={<div>Pesquisas Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/ligacoes" element={<div>Ligações Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/trafego" element={<div>Tráfego Pago Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/landing-page" element={<div>Landing Page Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/comercial" element={<div>Comercial Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/banco-dados" element={<div>Banco de Dados Dashboard (Em desenvolvimento)</div>} />
-              <Route path="/analise" element={<div>Análise Avançada Dashboard (Em desenvolvimento)</div>} />
+              <Route path="/whatsapp" element={<WhatsAppDashboard />} />
+              <Route path="/sms" element={<SMSDashboard />} />
+              <Route path="/pesquisas" element={<PesquisasDashboard />} />
+              <Route path="/ligacoes" element={<LigacoesDashboard />} />
+              <Route path="/trafego-pago" element={<TrafegoPagoDashboard />} />
+              <Route path="/trafego-organico" element={<TrafegoOrganicoDashboard />} />
+              <Route path="/landing-page" element={<LandingPageDashboard />} />
+              <Route path="/comercial" element={<ComercialDashboard />} />
+              <Route path="/analise" element={<AnaliseDashboard />} />
               <Route path="/settings" element={<div>Configurações (Em desenvolvimento)</div>} />
             </Route>
             
