@@ -15,8 +15,9 @@ interface PieChartProps {
   data: Array<{ name: string; value: number }>;
   colors?: string[];
   height?: number;
-  valueFormatter?: (value: number) => string;
+  valueFormatter?: (value: number, category?: string) => string;
   loading?: boolean;
+  className?: string;
 }
 
 export function PieChart({
@@ -27,6 +28,7 @@ export function PieChart({
   height = 300,
   valueFormatter = (value: number) => `${value}`,
   loading = false,
+  className,
 }: PieChartProps) {
   return (
     <Card>
@@ -40,7 +42,7 @@ export function PieChart({
             <div className="h-32 w-32 rounded-full border-4 border-muted border-t-primary animate-spin" />
           </div>
         ) : (
-          <ResponsiveContainer width="100%" height={height}>
+          <ResponsiveContainer width="100%" height={height} className={className}>
             <RechartsPieChart>
               <Pie
                 data={data}
@@ -56,7 +58,7 @@ export function PieChart({
                 ))}
               </Pie>
               <Tooltip 
-                formatter={valueFormatter}
+                formatter={(value) => valueFormatter(Number(value))}
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
                   borderColor: "hsl(var(--border))",

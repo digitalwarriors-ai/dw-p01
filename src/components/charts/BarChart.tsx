@@ -6,7 +6,8 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer
+  ResponsiveContainer,
+  Legend
 } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -14,13 +15,14 @@ interface BarChartProps {
   title: string;
   description?: string;
   data: Array<any>;
-  dataKey: string;
+  dataKey?: string;
   categories: string[];
   index: string;
   colors?: string[];
   height?: number;
-  valueFormatter?: (value: number) => string;
+  valueFormatter?: (value: number, category?: string) => string;
   loading?: boolean;
+  className?: string;
 }
 
 export function BarChart({
@@ -34,6 +36,7 @@ export function BarChart({
   height = 300,
   valueFormatter = (value: number) => `${value}`,
   loading = false,
+  className,
 }: BarChartProps) {
   return (
     <Card>
@@ -47,7 +50,7 @@ export function BarChart({
             <div className="h-32 w-32 rounded-full border-4 border-muted border-t-primary animate-spin" />
           </div>
         ) : (
-          <ResponsiveContainer width="100%" height={height}>
+          <ResponsiveContainer width="100%" height={height} className={className}>
             <RechartsBarChart
               data={data}
               margin={{
@@ -68,10 +71,10 @@ export function BarChart({
                 tick={{ fontSize: 12 }}
                 tickLine={false}
                 axisLine={{ strokeWidth: 0 }}
-                tickFormatter={valueFormatter}
+                tickFormatter={(value) => valueFormatter(value)}
               />
               <Tooltip
-                formatter={valueFormatter}
+                formatter={(value, name) => [valueFormatter(Number(value), name as string), name]}
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
                   borderColor: "hsl(var(--border))",
@@ -79,6 +82,7 @@ export function BarChart({
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
                 }}
               />
+              <Legend />
               {categories.map((category, i) => (
                 <Bar
                   key={`${category}-${i}`}

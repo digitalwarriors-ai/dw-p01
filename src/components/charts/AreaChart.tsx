@@ -6,7 +6,8 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  Legend
 } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -14,12 +15,16 @@ interface AreaChartProps {
   title: string;
   description?: string;
   data: Array<any>;
-  dataKey: string;
+  dataKey?: string;
+  categories?: string[];
+  index?: string;
   xAxisKey?: string;
   color?: string;
+  colors?: string[];
   height?: number;
-  valueFormatter?: (value: number) => string;
+  valueFormatter?: (value: number, category?: string) => string;
   loading?: boolean;
+  className?: string;
 }
 
 export function AreaChart({
@@ -27,11 +32,15 @@ export function AreaChart({
   description,
   data,
   dataKey,
+  categories = [],
+  index = "name",
   xAxisKey = "name",
   color = "#2563EB",
+  colors = ["#2563EB", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"],
   height = 300,
   valueFormatter = (value: number) => `${value}`,
   loading = false,
+  className,
 }: AreaChartProps) {
   return (
     <Card>
@@ -45,7 +54,7 @@ export function AreaChart({
             <div className="h-32 w-32 rounded-full border-4 border-muted border-t-primary animate-spin" />
           </div>
         ) : (
-          <ResponsiveContainer width="100%" height={height}>
+          <ResponsiveContainer width="100%" height={height} className={className}>
             <RechartsAreaChart
               data={data}
               margin={{
@@ -55,12 +64,6 @@ export function AreaChart({
                 bottom: 0,
               }}
             >
-              <defs>
-                <linearGradient id={`color-${dataKey}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={color} stopOpacity={0.8} />
-                  <stop offset="95%" stopColor={color} stopOpacity={0} />
-                </linearGradient>
-              </defs>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
               <XAxis
                 dataKey={xAxisKey}
@@ -72,10 +75,10 @@ export function AreaChart({
                 tick={{ fontSize: 12 }}
                 tickLine={false}
                 axisLine={{ strokeWidth: 0 }}
-                tickFormatter={valueFormatter}
+                tickFormatter={(value) => valueFormatter(value)}
               />
               <Tooltip
-                formatter={valueFormatter}
+                formatter={(value, name) => [valueFormatter(Number(value)), name]}
                 contentStyle={{
                   backgroundColor: "hsl(var(--card))",
                   borderColor: "hsl(var(--border))",
@@ -83,13 +86,27 @@ export function AreaChart({
                   boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
                 }}
               />
-              <Area
-                type="monotone"
-                dataKey={dataKey}
-                stroke={color}
-                fillOpacity={1}
-                fill={`url(#color-${dataKey})`}
-              />
+              {dataKey ? (
+                <Area
+                  type="monotone"
+                  dataKey={dataKey}
+                  stroke={color}
+                  fillOpacity={1}
+                  fill={`url(#color-${dataKey})`}
+                />
+              ) : (
+                categories.map((category, index) => (
+                  <Area
+                    key={`area-${category}`}
+                    type="monotone"
+                    dataKey={category}
+                    stroke={colors[index % colors.length]}
+                    fill={colors[index % colors.length]}
+                    fillOpacity={0.2}
+                  />
+                ))
+              )}
+              <Legend />
             </RechartsAreaChart>
           </ResponsiveContainer>
         )}
