@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -296,6 +295,7 @@ const AnaliseDashboard = () => {
           className="lg:col-span-3"
         >
           <AreaChart 
+            title="Análise Financeira Mensal"
             data={areaChartData}
             categories={["receita", "custo", "lucro"]}
             index="name"
@@ -311,6 +311,7 @@ const AnaliseDashboard = () => {
           className="lg:col-span-2"
         >
           <PieChart 
+            title="Distribuição de Clientes"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#3b82f6", "#10b981", "#f59e0b"]}
@@ -323,6 +324,7 @@ const AnaliseDashboard = () => {
         description="Desempenho por canal de marketing"
       >
         <BarChart 
+          title="Performance por Canal de Marketing"
           data={barChartData}
           categories={["conversao", "cac", "roi"]}
           index="canal"
