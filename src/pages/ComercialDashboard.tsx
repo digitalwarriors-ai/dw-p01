@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -300,6 +299,7 @@ const ComercialDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Fluxo de Atendimento Diário"
             data={areaChartData}
             categories={["leads", "atendidos", "vendas"]}
             index="name"
@@ -314,6 +314,7 @@ const ComercialDashboard = () => {
           description="Distribuição por canal de contato"
         >
           <PieChart 
+            title="Distribuição de Leads por Canal"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#3b82f6", "#10b981", "#f59e0b", "#ef4444"]}
