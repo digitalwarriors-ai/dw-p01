@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { BarChart } from "@/components/charts/BarChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -260,6 +259,7 @@ const PesquisasDashboard = () => {
           className="lg:col-span-2"
         >
           <BarChart 
+            title="Desempenho das Pesquisas"
             data={barChartData}
             categories={["respostas", "concluidas"]}
             index="pesquisa"
@@ -274,6 +274,7 @@ const PesquisasDashboard = () => {
           description="Distribuição das avaliações de satisfação"
         >
           <PieChart 
+            title="Distribuição de Satisfação"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#22c55e", "#84cc16", "#facc15", "#f97316", "#ef4444"]}

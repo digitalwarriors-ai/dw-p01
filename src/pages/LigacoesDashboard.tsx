@@ -279,18 +279,18 @@ const LigacoesDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
-            title="Desempenho de Ligações Diárias"
+            title="Performance de Ligações Diárias"
             data={areaChartData}
             categories={["total", "atendidas", "convertidas"]}
             index="name"
-            colors={["#64748b", "#3b82f6", "#10b981"]}
+            colors={["#10b981", "#3b82f6", "#f59e0b"]}
             valueFormatter={(value) => value.toLocaleString()}
             className="aspect-[4/3]"
           />
         </DashboardCard>
         
         <DashboardCard 
-          title="Status das Ligações" 
+          title="Resultado das Ligações" 
           description="Distribuição dos resultados das ligações"
         >
           <PieChart 

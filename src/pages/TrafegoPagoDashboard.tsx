@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { BarChart } from "@/components/charts/BarChart";
@@ -319,6 +318,7 @@ const TrafegoPagoDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Performance de Investimento em Ads"
             data={areaChartData}
             categories={["gasto", "cliques", "conversoes"]}
             index="name"
@@ -336,6 +336,7 @@ const TrafegoPagoDashboard = () => {
           description="Gastos e conversões por plataforma de anúncio"
         >
           <BarChart 
+            title="Conversões por Plataforma de Ads"
             data={barChartData}
             categories={["gasto", "conversoes"]}
             index="plataforma"

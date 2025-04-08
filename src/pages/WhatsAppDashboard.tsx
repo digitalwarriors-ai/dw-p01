@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -189,6 +188,7 @@ const WhatsAppDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Evolução de Mensagens WhatsApp"
             data={areaChartData}
             categories={["mensagens", "respostas", "conversao"]}
             index="name"
@@ -203,6 +203,7 @@ const WhatsAppDashboard = () => {
           description="Porcentagem de mensagens abertas"
         >
           <PieChart 
+            title="Distribuição de Abertura de Mensagens"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#3b82f6", "#e5e5e5"]}

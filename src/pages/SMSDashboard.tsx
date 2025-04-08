@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
@@ -231,6 +230,7 @@ const SMSDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Performance de SMS por Dia"
             data={areaChartData}
             categories={["enviados", "entregues", "cliques"]}
             index="name"
@@ -245,6 +245,7 @@ const SMSDashboard = () => {
           description="Porcentagem de SMS entregues com sucesso"
         >
           <PieChart 
+            title="Distribuição de Entrega de SMS"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#3b82f6", "#ef4444"]}

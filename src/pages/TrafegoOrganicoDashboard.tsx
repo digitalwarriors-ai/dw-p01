@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { BarChart } from "@/components/charts/BarChart";
@@ -371,6 +370,7 @@ const TrafegoOrganicoDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Evolução do Tráfego Orgânico"
             data={areaChartData}
             categories={["visitas", "usuarios", "conversoes"]}
             index="name"
@@ -385,6 +385,7 @@ const TrafegoOrganicoDashboard = () => {
           description="Sessões e conversões por fonte"
         >
           <BarChart 
+            title="Conversões por Fonte de Tráfego"
             data={barChartData}
             categories={["sessoes", "conversoes"]}
             index="fonte"
