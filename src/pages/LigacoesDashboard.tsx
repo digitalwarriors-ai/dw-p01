@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
 import { StatCard } from "@/components/charts/StatCard";
@@ -280,6 +279,7 @@ const LigacoesDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Desempenho de Ligações Diárias"
             data={areaChartData}
             categories={["total", "atendidas", "convertidas"]}
             index="name"
@@ -294,6 +294,7 @@ const LigacoesDashboard = () => {
           description="Distribuição dos resultados das ligações"
         >
           <PieChart 
+            title="Distribuição de Status das Ligações"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#10b981", "#f59e0b", "#3b82f6", "#6b7280"]}
