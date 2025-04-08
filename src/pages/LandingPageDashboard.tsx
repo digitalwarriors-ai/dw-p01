@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { AreaChart } from "@/components/charts/AreaChart";
 import { PieChart } from "@/components/charts/PieChart";
 import { StatCard } from "@/components/charts/StatCard";
@@ -346,6 +345,7 @@ const LandingPageDashboard = () => {
           className="lg:col-span-2"
         >
           <AreaChart 
+            title="Visitas e Conversões Diárias"
             data={areaChartData}
             categories={["visitas", "conversoes"]}
             index="name"
@@ -360,6 +360,7 @@ const LandingPageDashboard = () => {
           description="Distribuição de visitas por tipo de dispositivo"
         >
           <PieChart 
+            title="Distribuição de Tráfego por Dispositivo"
             data={pieChartData}
             className="aspect-[4/3]"
             colors={["#3b82f6", "#10b981", "#f59e0b"]}
